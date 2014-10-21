@@ -35,7 +35,10 @@ class ConveadTracker {
      * @param type $referer
      */
     public function __construct($api_key, $guest_uid, $visitor_uid = false, $visitor_info = false, $referer = false, $url = false) {
-        require __DIR__ . '/Browser.php';
+        if (!class_exists('Browser')) {
+            require __DIR__ . '/Browser.php';
+        }
+
         $this->brovser = new Browser();
         $this->api_key = $api_key;
         $this->guest_uid = $guest_uid;
@@ -75,7 +78,7 @@ class ConveadTracker {
         $product_url && $post["properties"]["product_url"] = $product_url;
 
         $post = json_encode($post);
-        
+
         if ($this->brovser->get($this->api_page, $post) === true)
             return true;
         else
@@ -101,7 +104,7 @@ class ConveadTracker {
         $price && $post["properties"]["price"] = $price;
 
         $post = json_encode($post);
-        
+
         if ($this->brovser->get($this->api_page, $post) === true)
             return true;
         else
@@ -159,13 +162,31 @@ class ConveadTracker {
             return $this->brovser->error;
     }
 
+    public function eventUpdateCart($order_array) {
+        $post = $this->getDefaultPost();
+        $post["type"] = "update_cart";
+        $properties = array();
+
+        $properties["items"] = $order_array;
+
+        $post["properties"] = $properties;
+
+        $post = json_encode($post);
+
+
+        if ($this->brovser->get($this->api_page, $post) === true)
+            return true;
+        else
+            return $this->brovser->error;
+    }
+
     public function view($url, $title) {
         $post = $this->getDefaultPost();
         $post["type"] = "link";
         $post["title"] = $title;
         $post["url"] = "http://" . $this->url . $url;
         $post["path"] = $url;
-        
+
         $post = json_encode($post);
 
 
