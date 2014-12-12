@@ -19,6 +19,7 @@ class ConveadTracker {
     /**
      * 
      * @param type $api_key
+     * @param type $domain
      * @param type $guest_uid
      * @param type $visitor_uid
      * @param type $visitor_info структура с параметрами текущего визитора (все параметры опциональные) следующего вида:
@@ -35,6 +36,7 @@ class ConveadTracker {
       ...
       }
      * @param type $referrer
+     * @param type $url
      */
     public function __construct($api_key, $domain, $guest_uid, $visitor_uid = false, $visitor_info = false, $referrer = false, $url = false) {
         if (!class_exists('Browser')) {
