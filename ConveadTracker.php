@@ -23,7 +23,7 @@ class ConveadTracker {
      * @param type $guest_uid
      * @param type $visitor_uid
      * @param type $visitor_info структура с параметрами текущего визитора (все параметры опциональные) следующего вида:
-      {
+      [
       first_name: 'Name',
       last_name: 'Surname',
       email: 'email',
@@ -34,7 +34,7 @@ class ConveadTracker {
       custom_field_1: 'custom value 1',
       custom_field_2: 'custom value 2',
       ...
-      }
+      ]
      * @param type $referrer
      * @param type $url
      */
