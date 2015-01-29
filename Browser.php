@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ÐšÐ»Ð°ÑÑ Ð´Ð»Â¤ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ post Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°Ð¼Ð¸
+ * Êëàññ äëÿ ðàáîòû ñ post çàïðîñàìè
  */
 class Browser {
 
@@ -56,7 +56,24 @@ class Browser {
         return $result;
     }
 
+    public function isUAAbandoned($user_agent){
+        if(!$user_agent)
+            return true;
+        $re = "/bot|crawl(er|ing)|google|yandex|rambler|yahoo|bingpreview|alexa|facebookexternalhit/"; 
+        
+        $matches = array(); 
+        preg_match($re, $user_agent, $matches);
+
+        if(count($matches) > 0)
+            return true;
+        else
+            return false;
+    }
+
     public function get($url, $post = false) {
+        if($this->isUAAbandoned($_SERVER['HTTP_USER_AGENT']))
+            return true;
+
         $curl = curl_init($url);
 
 
