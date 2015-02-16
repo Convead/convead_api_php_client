@@ -40,7 +40,7 @@ class ConveadTracker {
      */
     public function __construct($api_key, $domain, $guest_uid, $visitor_uid = false, $visitor_info = false, $referrer = false, $url = false) {
         if (!class_exists('Browser')) {
-            require __DIR__ . '/Browser.php';
+            require 'Browser.php';
         }
 
         $this->browser = new Browser();
