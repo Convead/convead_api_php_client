@@ -71,8 +71,8 @@ class ConveadTracker {
         else
             $post["visitor_uid"] = "";
 
-        $this->referrer && $post["referrer"] = $this->referrer;
-        $this->visitor_info && $post["visitor_info"] = $this->visitor_info;
+        if ($this->referrer) $post["referrer"] = $this->referrer;
+        if (is_array($this->visitor_info)) $post["visitor_info"] = $this->visitor_info;
         if ($this->url) {
             $post["url"] = "http://" . $this->url;
             $post["host"] = $this->url;
@@ -92,8 +92,8 @@ class ConveadTracker {
         $post = $this->getDefaultPost();
         $post["type"] = "view_product";
         $post["properties"]["product_id"] = $product_id;
-        $product_name && $post["properties"]["product_name"] = $product_name;
-        $product_url && $post["properties"]["product_url"] = $product_url;
+        if ($product_name) $post["properties"]["product_name"] = $product_name;
+        if ($product_url) $post["properties"]["product_url"] = $product_url;
         //error_reporting(E_ALL);
         $post = $this->json_encode($post);
         $this->putLog($post);
@@ -119,8 +119,8 @@ class ConveadTracker {
         $post["properties"]["product_id"] = $product_id;
         $post["properties"]["qnt"] = $qnt;
         $post["properties"]["price"] = $price;
-        $product_name && $post["properties"]["product_name"] = $product_name;
-        $product_url && $post["properties"]["product_url"] = $product_url;
+        if ($product_name) $post["properties"]["product_name"] = $product_name;
+        if ($product_url) $post["properties"]["product_url"] = $product_url;
 
         $post = $this->json_encode($post);
         $this->putLog($post);
@@ -143,8 +143,8 @@ class ConveadTracker {
         $post["type"] = "remove_from_cart";
         $post["properties"]["product_id"] = $product_id;
         $post["properties"]["qnt"] = $qnt;
-        $product_name && $post["properties"]["product_name"] = $product_name;
-        $product_url && $post["properties"]["product_url"] = $product_url;
+        if ($product_name) $post["properties"]["product_name"] = $product_name;
+        if ($product_url) $post["properties"]["product_url"] = $product_url;
 
         $post = $this->json_encode($post);
         $this->putLog($post);
@@ -171,8 +171,8 @@ class ConveadTracker {
         $properties = array();
         $properties["order_id"] = $order_id;
 
-        $revenue && $properties["revenue"] = $revenue;
-        $order_array && $properties["items"] = $order_array;
+        if ($revenue) $properties["revenue"] = $revenue;
+        if (is_array($order_array)) $properties["items"] = $order_array;
 
         $post["properties"] = $properties;
         //unset($post["domain"]);
