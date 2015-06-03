@@ -4,7 +4,7 @@
  * Класс для работы с post запросами
  */
 class Browser {
-    public $version = '1.1.0';
+    public $version = '1.1.1';
 
     protected $config = array();
     public $error = false;
