@@ -156,7 +156,7 @@ class ConveadTracker {
      * 
      * @param type $order_id - ID заказа в интернет-магазине
      * @param type $revenue - общая сумма заказа
-     * @param type $order_array JSON-структура вида:
+     * @param type $order_array массив вида:
       [
       {id: <product_id>, qnt: <product_count>, price: <product_price>},
       {...}
