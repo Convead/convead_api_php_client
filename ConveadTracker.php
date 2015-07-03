@@ -4,7 +4,7 @@
  * Класс для работы с сервисом convead.io
  */
 class ConveadTracker {
-    public $version = '1.1.2';
+    public $version = '1.1.3';
 
     private $browser;
     private $api_key;
@@ -74,7 +74,7 @@ class ConveadTracker {
             $post["visitor_uid"] = "";
 
         if ($this->referrer) $post["referrer"] = $this->referrer;
-        if (is_array($this->visitor_info) and count($this->visitor_info)) $post["visitor_info"] = $this->visitor_info;
+        if (is_array($this->visitor_info) and count($this->visitor_info) > 0) $post["visitor_info"] = $this->visitor_info;
         if ($this->url) {
             $post["url"] = "http://" . $this->url;
             $post["host"] = $this->url;
