@@ -158,7 +158,7 @@ class ConveadTracker {
      * @param type $revenue - общая сумма заказа
      * @param type $order_array массив вида:
       [
-          [id: <product_id>, qnt: <product_count>, price: <product_price>],
+          [product_id: <product_id>, qnt: <product_count>, price: <product_price>],
           [...]
       ]
      * @return boolean
@@ -189,7 +189,7 @@ class ConveadTracker {
      * 
      * @param array $order_array JSON-структура вида:
       [
-          [id: <product_id>, qnt: <product_count>, price: <product_price>],
+          [product_id: <product_id>, qnt: <product_count>, price: <product_price>],
           [...]
       ]
      * @return boolean
