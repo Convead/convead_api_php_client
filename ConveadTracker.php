@@ -25,18 +25,18 @@ class ConveadTracker {
      * @param type $guest_uid
      * @param type $visitor_uid
      * @param type $visitor_info структура с параметрами текущего визитора (все параметры опциональные) следующего вида:
-      [
-      first_name: 'Name',
-      last_name: 'Surname',
-      email: 'email',
-      phone: '1-111-11-11-11',
-      date_of_birth: '1984-06-16',
-      gender: 'male',
-      language: 'ru',
-      custom_field_1: 'custom value 1',
-      custom_field_2: 'custom value 2',
-      ...
-      ]
+      {
+        first_name: 'Name',
+        last_name: 'Surname',
+        email: 'email',
+        phone: '1-111-11-11-11',
+        date_of_birth: '1984-06-16',
+        gender: 'male',
+        language: 'ru',
+        custom_field_1: 'custom value 1',
+        custom_field_2: 'custom value 2',
+        ...
+      }
      * @param type $referrer
      * @param type $url
      */
@@ -158,8 +158,8 @@ class ConveadTracker {
      * @param type $revenue - общая сумма заказа
      * @param type $order_array массив вида:
       [
-          [product_id: <product_id>, qnt: <product_count>, price: <product_price>],
-          [...]
+          {product_id: <product_id>, qnt: <product_count>, price: <product_price>},
+          {...}
       ]
      * @return boolean
      */
@@ -189,8 +189,8 @@ class ConveadTracker {
      * 
      * @param array $order_array JSON-структура вида:
       [
-          [product_id: <product_id>, qnt: <product_count>, price: <product_price>],
-          [...]
+          {product_id: <product_id>, qnt: <product_count>, price: <product_price>},
+          {...}
       ]
      * @return boolean
      */
