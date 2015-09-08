@@ -4,7 +4,7 @@
  * Класс для работы с сервисом convead.io
  */
 class ConveadTracker {
-    public $version = '1.1.3';
+    public $version = '1.1.4';
 
     private $browser;
     private $api_key;
@@ -12,7 +12,7 @@ class ConveadTracker {
     private $visitor_info = false;
     private $visitor_uid = false;
     private $referrer = false;
-    private $api_page = "http://tracker.convead.io/watch/event";
+    private $api_page = "https://tracker.convead.io/watch/event";
     private $url = false;
     private $domain = false;
     private $charset = 'utf-8';
