@@ -4,7 +4,7 @@
  * Класс для работы с сервисом convead.io
  */
 class ConveadTracker {
-    public $version = '1.1.4';
+    public $version = '1.1.5';
 
     private $browser;
     private $api_key;
@@ -227,6 +227,21 @@ class ConveadTracker {
         $post = $this->post_encode($post);
         $this->putLog($post);
 
+        if ($this->browser->get($this->api_page, $post) === true)
+            return true;
+        else
+            return $this->browser->error;
+    }
+
+    /**
+     *
+     * @return boolean
+     */
+    public function eventUpdateInfo() {
+        $post = $this->getDefaultPost();
+        $post["type"] = "update_info";
+        $post = $this->post_encode($post);
+        $this->putLog($post);
         if ($this->browser->get($this->api_page, $post) === true)
             return true;
         else
