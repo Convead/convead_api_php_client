@@ -4,7 +4,7 @@
  * Класс для работы с сервисом convead.io
  */
 class ConveadTracker {
-    public $version = '1.1.8';
+    public $version = '1.1.9';
 
     private $browser;
     private $api_key;
@@ -165,7 +165,9 @@ class ConveadTracker {
         $properties = array();
         $properties["order_id"] = (string) $order_id;
 
-        if ($revenue) $properties["revenue"] = $revenue;
+        if ($revenue == false) return false;
+        else $properties["revenue"] = $revenue;
+
         if (is_array($order_array)) $properties["items"] = $order_array;
 
         $post["properties"] = $properties;
