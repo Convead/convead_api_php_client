@@ -4,7 +4,7 @@
  * Класс для работы с сервисом convead.io
  */
 class ConveadTracker {
-    public $version = '1.1.9';
+    public $version = '1.1.10';
 
     private $browser;
     private $api_key;
@@ -41,7 +41,7 @@ class ConveadTracker {
      * @param type $url
      */
     public function __construct($api_key, $domain, $guest_uid, $visitor_uid = false, $visitor_info = false, $referrer = false, $url = false) {
-        $this->browser = new Browser();
+        $this->browser = new ConveadBrowser();
         $this->api_key = (string) $api_key;
         
         $domain_encoding = mb_detect_encoding($domain, array('UTF-8', 'windows-1251'));
@@ -332,7 +332,7 @@ class ConveadTracker {
 /**
  * Класс для работы с post запросами
  */
-class Browser {
+class ConveadBrowser {
     public $version = '1.1.3';
 
     protected $config = array();
