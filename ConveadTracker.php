@@ -289,7 +289,7 @@ class ConveadApi {
     }
 
     public function order_delete($order_id) {
-        $this->method = 'DELETE';
+        $this->browser->method = 'DELETE';
         $url = "{$this->api_page}api/v1/accounts/{$this->api_key}/orders/{$order_id}";
         return $this->browser->get($url);
     }
