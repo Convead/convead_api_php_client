@@ -312,6 +312,7 @@ class ConveadBrowser {
     public $version = '1.1.4';
 
     public $debug = false;
+
     public $timeout = 1;
     public $connect_timeout = 1;
     public $method = 'POST';
@@ -332,7 +333,7 @@ class ConveadBrowser {
     }
 
     public function get($url, $post = false) {
-        $this->putLog($url, $post);
+        $this->put_log($url, $post);
 
         if ($this->isUAAbandoned($_SERVER['HTTP_USER_AGENT']))
             return true;
@@ -380,7 +381,7 @@ class ConveadBrowser {
         return implode('&', $query_array);
     }
 
-    private function putLog($url, $post) {
+    private function put_log($url, $post) {
         if (!$this->debug) return true;
 
         ob_start();
