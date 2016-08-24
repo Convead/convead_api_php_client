@@ -387,7 +387,7 @@ class ConveadBrowser {
         print_r($post);
         $string = ob_get_clean();
 
-        $row = date("Y.m.d H:i:s") . "\n" . $url . "\n" . $string . "\n\n";
+        $row = date("Y.m.d H:i:s") . "\n" . $this->method . ' ' . $url . "\n" . $string . "\n\n";
         $filename = dirname(__FILE__) . "/debug.log";
         file_put_contents($filename, $row, FILE_APPEND);
     }
