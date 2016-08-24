@@ -4,7 +4,7 @@
  * Класс для работы с сервисом convead.io
  */
 class ConveadTracker {
-    public $version = '1.1.10';
+    public $version = '1.2.1';
 
     private $browser;
     private $api_key;
@@ -311,7 +311,7 @@ class ConveadApi {
 class ConveadBrowser {
     public $version = '1.1.4';
 
-    public $debug = true;
+    public $debug = false;
     public $timeout = 500;
     public $method = 'POST';
     public $error = false;
