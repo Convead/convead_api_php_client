@@ -147,8 +147,7 @@ class ConveadTracker {
         $properties = array();
         $properties["order_id"] = (string) $order_id;
 
-        if ($revenue == false) return false;
-        else $properties["revenue"] = $revenue;
+        if ($revenue !== false) $properties["revenue"] = $revenue;
 
         if (is_array($order_array)) $properties["items"] = $order_array;
 
