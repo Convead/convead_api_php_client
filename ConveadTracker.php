@@ -4,7 +4,7 @@
  * Класс для работы с сервисом convead.io
  */
 class ConveadTracker {
-    public $version = '1.1.10';
+    public $version = '1.1.11';
 
     private $browser;
     private $api_key;
@@ -333,7 +333,7 @@ class ConveadTracker {
  * Класс для работы с post запросами
  */
 class ConveadBrowser {
-    public $version = '1.1.3';
+    public $version = '1.1.4';
 
     protected $config = array();
     public $error = false;
@@ -386,24 +386,7 @@ class ConveadBrowser {
         return $result;
     }
 
-    public function isUAAbandoned($user_agent){
-        if(!$user_agent)
-            return true;
-        $re = "/bot|crawl(er|ing)|google|yandex|rambler|yahoo|bingpreview|alexa|facebookexternalhit|bitrix/i"; 
-        
-        $matches = array(); 
-        preg_match($re, $user_agent, $matches);
-
-        if(count($matches) > 0)
-            return true;
-        else
-            return false;
-    }
-
     public function get($url, $post = false) {
-        if($this->isUAAbandoned($_SERVER['HTTP_USER_AGENT']))
-            return true;
-
         if(isset($_COOKIE['convead_track_disable']))
             return 'Convead tracking disabled';
 
