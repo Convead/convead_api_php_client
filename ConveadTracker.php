@@ -320,22 +320,8 @@ class ConveadBrowser {
     public function __initialize() {
     }
 
-    public function isUAAbandoned($user_agent){
-        if(!$user_agent) return true;
-
-        $re = "/bot|crawl(er|ing)|google|yandex|rambler|yahoo|bingpreview|alexa|facebookexternalhit|bitrix/i"; 
-        
-        $matches = array(); 
-        preg_match($re, $user_agent, $matches);
-
-        return (count($matches) > 0);
-    }
-
     public function get($url, $post = false) {
         $this->put_log($url, $post);
-
-        if ($this->isUAAbandoned($_SERVER['HTTP_USER_AGENT']))
-            return true;
 
         if (isset($_COOKIE['convead_track_disable']))
             return 'Convead tracking disabled';
