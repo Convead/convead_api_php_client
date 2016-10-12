@@ -287,13 +287,13 @@ class ConveadApi {
         $this->api_key = (string) $api_key;
     }
 
-    public function order_delete($order_id) {
+    public function orderDelete($order_id) {
         $this->browser->method = 'DELETE';
         $url = "{$this->api_page}api/v1/accounts/{$this->api_key}/orders/{$order_id}";
         return $this->browser->get($url);
     }
 
-    public function order_set_state($order_id, $state) {
+    public function orderSetState($order_id, $state) {
         $url = "{$this->api_page}api/v1/accounts/{$this->api_key}/orders/{$order_id}";
         $post = array(
             'state' => $state
