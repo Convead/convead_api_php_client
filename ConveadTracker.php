@@ -51,6 +51,8 @@ class ConveadTracker {
         $this->visitor_uid = (string) $visitor_uid;
         $this->referrer = (string) $referrer;
         $this->url = (string) $url;
+        
+        if (!$this->guest_uid and !$this->visitor_uid) $this->guest_uid = uniqid();
     }
 
     private function getDefaultPost() {
@@ -234,7 +236,7 @@ class ConveadTracker {
     private function post_encode($post) { 
         $ret = array('app_key' => $post['app_key']);
         if (!empty($post['visitor_uid'])) $ret['visitor_uid'] = $post['visitor_uid'];
-        if (!empty($post['guest_uid']))) $ret['guest_uid'] = $post['guest_uid'];
+        if (!empty($post['guest_uid'])) $ret['guest_uid'] = $post['guest_uid'];
         $ret['data'] = $this->json_encode($post);
         return $ret;
     }
