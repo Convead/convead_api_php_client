@@ -233,8 +233,8 @@ class ConveadTracker {
 
     private function post_encode($post) { 
         $ret = array('app_key' => $post['app_key']);
-        if ($post['visitor_uid']) $ret['visitor_uid'] = $post['visitor_uid'];
-        if ($post['guest_uid']) $ret['guest_uid'] = $post['guest_uid'];
+        if (!empty($post['visitor_uid'])) $ret['visitor_uid'] = $post['visitor_uid'];
+        if (!empty($post['guest_uid']))) $ret['guest_uid'] = $post['guest_uid'];
         $ret['data'] = $this->json_encode($post);
         return $ret;
     }
