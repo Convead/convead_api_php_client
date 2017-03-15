@@ -14,8 +14,10 @@ $api = new ConveadApi($access_token);
 
 **Пример поиска контакта по email**
 ```php
-$visitor    = array(
-  'email'=>'mail@example.net'
+$visitor      = array(
+  'filter' => array(
+    'uid' => '59'
+  )
 );
 
 $responce = $api->request("/api/v1/accounts/{$app_key}/visitors", 'GET', $visitor);
