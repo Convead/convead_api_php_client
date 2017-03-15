@@ -20,5 +20,8 @@ $visitor      = array(
   )
 );
 
-$responce = $api->request("/api/v1/accounts/{$app_key}/visitors", 'GET', $visitor);
+$data = $api->request("/api/v1/accounts/{$app_key}/visitors", 'GET', $visitor);
+
+if (empty($data['error'])) print_r( $data );
+else echo $data['error'];
 ```
