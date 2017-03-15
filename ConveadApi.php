@@ -9,7 +9,7 @@ class ConveadApi {
   public $version = '1.0.0';
 
   public $debug = false;
-  public $host = "tracker.convead.io";
+  public $host = "app.convead.io";
   public $protocol = "https";
   public $timeout = 1;
   public $connect_timeout = 1;
@@ -78,18 +78,18 @@ class ConveadApi {
 
     curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-Type: application/x-www-form-urlencoded; charset=utf-8", "Accept:application/json, text/javascript, */*; q=0.01"));
 
-    $response = json_decode(curl_exec($curl));
-
-    if (!is_array($response)) $response = array();
+    $ret = array(
+      'response' => json_decode(curl_exec($curl))
+    );
 
     $error = curl_error($curl);
 
-    if ($error) return array('error' => $error);
-    else $response['error'] = false;
-
     curl_close($curl);
+    
+    if ($error) return array('error' => $error);
+    else $ret['error'] = false;
 
-    return $response;
+    return $ret;
   }
 
   /**
